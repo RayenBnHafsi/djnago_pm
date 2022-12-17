@@ -18,18 +18,19 @@ class ProjectStatus(models.IntegerChoices):
 
 
 class Project(models.Model):
-    titile = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
     description = models.TextField()
     status = models.IntegerField(
-        choices=ProjectStatus.choices,
-        default=ProjectStatus.PANDING
+        choices = ProjectStatus.choices,
+        default = ProjectStatus.PANDING
     )
     created_at = models.DateField(auto_now_add = True)
     updated_at = models.DateField(auto_now = True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT) 
     user = models.ForeignKey(
         AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null = True
     )
 
     def __str__(self):
@@ -43,4 +44,5 @@ class Task(models.Model):
 
     def __str__(self):
         return self.description
+
 
