@@ -2,9 +2,10 @@
 
 {% load i18n %}
 {% block content %}
+<h3>{% trans "Are you sur ?" %}</h3>
     <form method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="Submit" />
+        <input type="submit" value="DELETE" />
     </form>
 {% endblock  %}
