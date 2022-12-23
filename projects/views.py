@@ -8,15 +8,22 @@ from . import forms
 class ProjectListView(ListView):
     model = models.Project
     template_name = 'project/list.html'
+    paginate_by = 6
+
+    # def get_queryset(self):
+    #     query_set = super().get_queryset()
+    #     where = {}
+    #     q = self.request.GET.get('q', None)
+    #     if q:
+    #         where['title-icontains'] = q
+    #     return query_set.filter(**where)
 
 
 class ProjectCreatView(CreateView):
     model = models.Project
     form_class = forms.ProjectCreateForm
     template_name = 'project/create.html'
-    
-    def get_success_url(self):
-        return reverse('Project_update', args=[self.object.id])
+    success_url = reverse_lazy("Project_list")
 
 
 class ProjectUpdateView(UpdateView):
