@@ -20,9 +20,9 @@
               {{ user.usernmae }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">{% trans "Prophie" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'profile'%}">{% trans "Profile" %}</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">{% trans "Logout" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout'%}">{% trans "Logout" %}</a></li>
             </ul>
         </ul>
           <form method="GET" action="{% url 'Project_list'%}" class="d-flex">
@@ -40,6 +40,9 @@
             </div>
           </form>
         {% else %}
+          <a class="btn btn-outline-light mx" href="{% url 'register' %}">
+            {% trans "Register" %}
+          </a>
           <a class="btn btn-outline-light" href="{% url 'login' %}">
             {% trans "Login" %}
           </a>
